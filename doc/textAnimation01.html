@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #txt {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            animation: txt 10s infinite linear;
+            text-transform: uppercase;
+        }
+
+        @keyframes txt {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="txt"></div>
+    <script>
+        const txt = 'leechanghunbabu';
+
+        const txtAni = (t) => {
+            const mt = [...t].map(it => {
+                return (
+                    '<span>' + it + '</span>'
+                )
+            });
+            document.querySelector('#txt').innerHTML = mt.join('');
+            const AT = document.querySelectorAll('#txt>span');
+            AT.forEach((it, idx) => {
+                return (
+                    it.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    color: tomato;
+                    font-size: 100px;
+                    font-weight: 900;
+                    width: 100px;
+                    height: 600px;
+                    text-align: center;
+                    transform: translate(-50% , -50%) rotate(${idx * (360 / AT.length)}deg);
+
+                     `
+                )
+            })
+        }
+
+        txtAni(txt)
+    </script>
+</body>
+
+</html>

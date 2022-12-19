@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="nav"></div>
+    <script>
+        const GNB = document.querySelector('#nav');
+        const MENU = [
+            {
+                title: 'menu01',
+                lnk: '#',
+                sub: [
+                    { title: 'smenu11', lnk: '#s1' },
+                    { title: 'smenu12', lnk: '#s2' },
+                    { title: 'smenu13', lnk: '#s3' }
+                ]
+            },
+            {
+                title: 'menu02',
+                lnk: '#',
+                sub: [
+                    { title: 'smenu21', lnk: '#s1' },
+                    { title: 'smenu22', lnk: '#s2' },
+                    { title: 'smenu23', lnk: '#s3' }
+                ]
+            },
+            {
+                title: 'menu03',
+                lnk: '#',
+                sub: [
+                    { title: 'smenu21', lnk: '#s1' },
+                    { title: 'smenu22', lnk: '#s2' },
+                    { title: 'smenu23', lnk: '#s3' }
+                ]
+            },
+        ];
+        const UL = MENU.map((it, idx) => {
+            return (
+                `
+                <ul>
+                    <li>
+                        <a href=${it.lnk}>${it.title}</a>
+                        <ul class='submenu'>
+                            ${it.sub.map(it => `<li><a href=${it.lnk}>${it.title}</a></li>`).join('')}
+                        </ul>
+                    </li>
+                </ul>
+                `
+            )
+        }).join('')
+        GNB.innerHTML = UL;
+    </script>
+</body>
+
+</html>

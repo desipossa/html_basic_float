@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        body {
+            height: 300vh;
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: tomato;
+            color: #fff;
+            line-height: 100px;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        #header.on {
+            top: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">위로 올리면 나오고 내리면 사라지는 메뉴바</div>
+    <script>
+        const HD = document.querySelector('#header');
+
+        const SHMENU = e => {
+            console.log(e.deltaY);
+            let edY = e.deltaY;
+            edY > 0 ? HD.classList.add('on') : HD.classList.remove('on')
+        }
+
+        window.addEventListener('wheel', SHMENU)
+    </script>
+
+</body>
+
+</html>
